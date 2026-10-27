@@ -142,7 +142,7 @@ h2 { margin: 0; font: 700 34px/1.15 var(--display); letter-spacing: -0.02em; }
 .tile h3 { margin: 0; font: 700 26px/1.15 var(--display); letter-spacing: -0.02em; }
 .vuln-note { font-weight: 500; color: var(--soft); }
 .cves { font: 500 14px var(--mono); }
-.cves a { position: relative; z-index: 1; color: var(--accent); }
+.cves a { position: relative; z-index: 2; color: var(--accent); }
 .severity { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; margin-top: auto; padding-top: 8px; font-size: 15px; color: var(--soft); }
 .severity strong { color: var(--crit-text); }
 .bars { display: inline-flex; gap: 3px; }
@@ -151,7 +151,8 @@ h2 { margin: 0; font: 700 34px/1.15 var(--display); letter-spacing: -0.02em; }
 .tile.sev-high .bars span.on { background: var(--high); }
 .tile.sev-high .severity strong { color: var(--high-text); }
 .check { display: flex; align-items: center; justify-content: center; min-height: 52px; margin-top: 8px; border-radius: 10px; background: var(--accent); color: var(--on-accent); font-weight: 600; text-decoration: none; }
-.check::after { content: ""; position: absolute; inset: 0; }   /* whole tile is clickable */
+.check::after { content: ""; position: absolute; inset: 0; z-index: 1; }   /* whole tile is clickable */
+.tile { cursor: pointer; }
 .tile:hover .check { filter: brightness(.9); }
 .tile-missing { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; min-height: 300px; padding: 32px; border-radius: 18px; border: 2px dashed var(--dash); color: var(--muted); text-align: center; text-decoration: none; }
 .tile-missing:hover { border-color: var(--signal); }

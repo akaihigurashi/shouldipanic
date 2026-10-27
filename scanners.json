@@ -12,7 +12,7 @@
       "summary": "Memory corruption in the Brotli decompressor. Hits Node.js, Python, .NET, Envoy and more.",
       "severity": "Critical",
       "level": 5,
-      "since": "2026-10-21",
+      "since": "2026-10-22",
       "url": "https://brotli2scan.shouldipanic.ch",
       "github": "https://github.com/akaihigurashi/brotli2scan",
       "colors": {

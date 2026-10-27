@@ -52,7 +52,15 @@
   }
   tiles.forEach((t) => {
     const link = t.querySelector(".check");
-    if (link) link.addEventListener("click", () => markChecked([t.dataset.scanner]));
+    if (!link) return;
+    link.addEventListener("click", () => markChecked([t.dataset.scanner]));
+    // the whole tile opens the scanner (CSS covers it too; this catches every browser)
+    t.addEventListener("click", (ev) => {
+      if (ev.target.closest("a") || (window.getSelection && String(window.getSelection()))) return;
+      markChecked([t.dataset.scanner]);
+      if (ev.metaKey || ev.ctrlKey) window.open(link.href, "_blank", "noopener");
+      else location.href = link.href;
+    });
   });
   requestAnimationFrame(() => requestAnimationFrame(updateMeter));   // let the needle swing in
   window.addEventListener("pageshow", updateMeter);                  // back button
@@ -75,7 +83,8 @@
     const before = new Map(tiles.map((t) => [t, t.getBoundingClientRect()]));
     const order = tiles.slice().sort((x, y) => {
       const a = info(x), b = info(y);
-      const r = mode === "severe" ? (bySeverity(a, b) || byDate(a, b)) : (byDate(a, b) || bySeverity(a, b));
+      // newest: date, then the order in scanners.json; most severe: score, exploited, date
+      const r = mode === "severe" ? (bySeverity(a, b) || byDate(a, b)) : byDate(a, b);
       return r || a.pos - b.pos;
     });
     order.forEach((t) => tilesBox.insertBefore(t, missing));
@@ -274,7 +283,7 @@
       summarize(list, host);
       sortRows(list);
       document.getElementById("results-note").textContent = "Checked " +
-        new Date().toLocaleString([], { dateStyle: "medium", timeStyle: "short" }) +
+        new Date().toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", hour12: false }) +
         ". “Details” opens the scanner's own page with the full result: what gave it away, fixed versions, what to do next.";
     }
     go.disabled = false;
