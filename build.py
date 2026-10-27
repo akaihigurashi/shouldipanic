@@ -28,7 +28,7 @@ def tile(s):
     bars = "".join('<span class="on"></span>' if i < s["level"] else "<span></span>" for i in range(5))
     note = f' <span class="vuln-note">{esc(s["vuln_note"])}</span>' if s.get("vuln_note") else ""
     rest = s["name"][len(s["prefix"]) + 1:]
-    return f'''      <article class="tile" style="{style}">
+    return f'''      <article class="tile" style="{style}" data-scanner="{esc(s["name"])}">
         <div class="tile-top">
           <p class="tile-mark"><span>{esc(s["prefix"])}</span><span class="wm-2">2</span><span class="wm-scan">{esc(rest)}</span></p>
           {s["art"]}
@@ -50,13 +50,15 @@ def build():
     data = json.load(open(os.path.join(HERE, "scanners.json"), encoding="utf-8"))
     scanners = data["scanners"]
     css = open(os.path.join(HERE, "site", "style.css"), "rb").read()
+    js = open(os.path.join(HERE, "site", "app.js"), "rb").read()
     page = open(os.path.join(HERE, "template.html"), encoding="utf-8").read()
     repo_links = "".join(f'<a href="{esc(s["github"])}" rel="noopener">{esc(s["name"])} on GitHub</a>'
                          for s in scanners)
     return (page.replace("{{TILES}}", "\n".join(tile(s) for s in scanners))
                 .replace("{{REPO_LINKS}}", repo_links)
                 .replace("{{FIRST}}", scanners[0]["name"])
-                .replace("{{CSS_VERSION}}", hashlib.sha256(css).hexdigest()[:10]))
+                .replace("{{CSS_VERSION}}", hashlib.sha256(css).hexdigest()[:10])
+                .replace("{{JS_VERSION}}", hashlib.sha256(js).hexdigest()[:10]))
 
 
 def main():

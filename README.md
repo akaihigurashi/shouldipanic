@@ -1,4 +1,9 @@
-# shouldipanic.ch
+<h1>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/logo-dark.png">
+    <img alt="shouldipanic" src="docs/logo-light.png" width="351">
+  </picture>
+</h1>
 
 The landing page of [shouldipanic.ch](https://shouldipanic.ch): free checks for
 current web vulnerabilities. Each vulnerability has its own scanner with its own
