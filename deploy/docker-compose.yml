@@ -1,0 +1,106 @@
+# The whole site on one machine: the landing page and every scanner, each in its own
+# hardened container. nginx on the host (deploy/nginx.conf) does TLS and forwards to them.
+#
+#   cp .env.example .env        # set DOMAIN and the rest
+#   docker compose pull && docker compose up -d
+#
+# Ports are bound to 127.0.0.1 by default. If nginx runs on another machine (a load
+# balancer), set BIND_IP and TRUSTED_PROXY in .env.
+
+x-scanner: &scanner
+  restart: unless-stopped
+  networks:
+    - panic
+  read_only: true
+  tmpfs:
+    - /tmp
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+  mem_limit: 256m
+  pids_limit: 128
+  logging:
+    driver: json-file
+    options:
+      max-size: "10m"
+      max-file: "3"
+
+# the same settings for every scanner
+x-panic-env: &panic-env
+  PANIC_TRUSTED_PROXY: "${TRUSTED_PROXY:-172.30.200.1}"
+  PANIC_DENY_HOSTS: "${DENY_HOSTS:-}"
+  PANIC_DENY_IPS: "${DENY_IPS:-}"
+  PANIC_OPERATOR: "${OPERATOR:-}"
+  PANIC_CONTACT: "${CONTACT:-}"
+  PANIC_IMPRINT_URL: "${IMPRINT_URL:-}"
+  PANIC_ACCESS_KEYS: "${ACCESS_KEYS:-}"         # access keys (optional), see panic-core README
+  PANIC_TRUST_SECRET: "${TRUST_SECRET:-}"
+  PANIC_COOKIE_DOMAIN: "${DOMAIN}"              # one unlock for all subdomains
+  PANIC_EXTRA_ORIGINS: "https://${DOMAIN}"      # the landing page: Check all and /unlock
+
+services:
+  shouldipanic:
+    image: ghcr.io/akaihigurashi/shouldipanic:latest
+    container_name: shouldipanic
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 64m
+    ports:
+      - "${BIND_IP:-127.0.0.1}:8090:8090"
+
+  php2scan:
+    <<: *scanner
+    image: ghcr.io/akaihigurashi/php2scan:latest
+    container_name: php2scan
+    environment:
+      <<: *panic-env
+      PANIC_ORIGIN: "https://php2scan.${DOMAIN}"
+    ports:
+      - "${BIND_IP:-127.0.0.1}:8088:8088"
+    volumes:
+      - php2scan-data:/data
+
+  brotli2scan:
+    <<: *scanner
+    image: ghcr.io/akaihigurashi/brotli2scan:latest
+    container_name: brotli2scan
+    environment:
+      <<: *panic-env
+      PANIC_ORIGIN: "https://brotli2scan.${DOMAIN}"
+    ports:
+      - "${BIND_IP:-127.0.0.1}:8089:8089"
+    volumes:
+      - brotli2scan-data:/data
+
+  plex2scan:
+    <<: *scanner
+    image: ghcr.io/akaihigurashi/plex2scan:latest
+    container_name: plex2scan
+    environment:
+      <<: *panic-env
+      PANIC_ORIGIN: "https://plex2scan.${DOMAIN}"
+    ports:
+      - "${BIND_IP:-127.0.0.1}:8091:8091"
+    volumes:
+      - plex2scan-data:/data
+
+# fixed subnet: nginx on this machine reaches the containers via its gateway 172.30.200.1,
+# which is the address the scanners trust for X-Real-IP (TRUSTED_PROXY)
+networks:
+  panic:
+    ipam:
+      config:
+        - subnet: 172.30.200.0/24
+          gateway: 172.30.200.1
+
+volumes:
+  php2scan-data:
+  brotli2scan-data:
+  plex2scan-data:

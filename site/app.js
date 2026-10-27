@@ -254,7 +254,7 @@
     go.textContent = "Checking…";
     const list = tiles.map(makeRow);
     rows.replaceChildren(...list.map((r) => r.row));
-    list.forEach((r) => { r.details.href = r.tile.dataset.url.replace(/\/$/, "") + "/?host=" + encodeURIComponent(host); });
+    list.forEach((r) => { r.details.href = r.tile.dataset.url.replace(/\/$/, "") + "/?host=" + encodeURIComponent(host) + "&show=1"; });
     document.getElementById("sum-kicker").textContent = "Checking " + list.length + " scanners…";
     document.getElementById("sum-h").textContent = "Checking…";
     document.getElementById("sum-lede").replaceChildren(el("span", { class: "host", text: host }));
