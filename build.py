@@ -35,7 +35,7 @@ def tile(s):
         </div>
         <div class="tile-body">
           <h3>{esc(s["vuln"])}{note}</h3>
-          <p class="cves">{" and ".join(links)}</p>
+          <p class="cves">{(", ".join(links[:-1]) + " and " + links[-1]) if len(links) > 1 else links[0]}</p>
           <p>{esc(s["summary"])}</p>
           <div class="severity">
             <span class="bars" role="img" aria-label="Panic level {s["level"]} of 5">{bars}</span>

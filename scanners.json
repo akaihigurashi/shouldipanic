@@ -6,14 +6,24 @@
       "prefix": "brotli",
       "vuln": "HTTP2Shell",
       "vuln_note": "(Brotli)",
-      "cves": ["CVE-2026-111497"],
+      "cves": [
+        "CVE-2026-111497"
+      ],
       "summary": "Memory corruption in the Brotli decompressor. Hits Node.js, Python, .NET, Envoy and more.",
       "severity": "Critical",
       "level": 5,
       "since": "2026-10-21",
       "url": "https://brotli2scan.shouldipanic.ch",
       "github": "https://github.com/akaihigurashi/brotli2scan",
-      "colors": {"top": "#efdcb8", "card": "#fffaf1", "border": "#e2d5bf", "accent": "#8f4a1c", "on_accent": "#fffaf1", "ink": "#2a1d13", "soft": "#6b5544"},
+      "colors": {
+        "top": "#efdcb8",
+        "card": "#fffaf1",
+        "border": "#e2d5bf",
+        "accent": "#8f4a1c",
+        "on_accent": "#fffaf1",
+        "ink": "#2a1d13",
+        "soft": "#6b5544"
+      },
       "art": "<svg aria-hidden=\"true\" viewBox=\"0 0 120 80\" width=\"72\" height=\"48\"><ellipse cx=\"60\" cy=\"50\" rx=\"56\" ry=\"27\" fill=\"#7a3d15\"/><ellipse cx=\"60\" cy=\"44\" rx=\"54\" ry=\"30\" fill=\"#8f4a1c\"/><ellipse cx=\"52\" cy=\"34\" rx=\"34\" ry=\"14\" fill=\"#c98a4b\" opacity=\".55\"/><path d=\"M34 30 Q42 44 38 58M58 24 Q66 42 62 62M82 28 Q90 44 86 58\" stroke=\"#f3dcb4\" stroke-width=\"5\" fill=\"none\" stroke-linecap=\"round\"/></svg>"
     },
     {
@@ -21,15 +31,54 @@
       "prefix": "php",
       "vuln": "PHP2Shell",
       "vuln_note": "",
-      "cves": ["CVE-2026-109618", "CVE-2026-109619"],
+      "cves": [
+        "CVE-2026-109618",
+        "CVE-2026-109619"
+      ],
       "summary": "Remote code execution in PHP itself. Hits WordPress, Joomla, Nextcloud and every other PHP site.",
       "severity": "Critical",
       "level": 5,
       "since": "2026-10-21",
       "url": "https://php2scan.shouldipanic.ch",
       "github": "https://github.com/akaihigurashi/php2scan",
-      "colors": {"top": "#d9e1fb", "card": "#f7f8fe", "border": "#d6dcf3", "accent": "#2447c9", "on_accent": "#ffffff", "ink": "#18211d", "soft": "#4b5852"},
+      "colors": {
+        "top": "#d9e1fb",
+        "card": "#f7f8fe",
+        "border": "#d6dcf3",
+        "accent": "#2447c9",
+        "on_accent": "#ffffff",
+        "ink": "#18211d",
+        "soft": "#4b5852"
+      },
       "art": "<span class=\"art-php\" aria-hidden=\"true\">&lt;?php</span>"
+    },
+    {
+      "name": "plex2scan",
+      "prefix": "plex",
+      "vuln": "Plex2Shell",
+      "vuln_note": "",
+      "cves": [
+        "CVE-2026-96652",
+        "CVE-2026-96654",
+        "CVE-2026-96655",
+        "CVE-2026-96656"
+      ],
+      "summary": "Four chained flaws that take over Plex Media Server without a login. Exploited to plant cryptominers.",
+      "severity": "High",
+      "level": 4,
+      "since": "2026-10-16",
+      "url": "https://plex2scan.shouldipanic.ch",
+      "github": "https://github.com/akaihigurashi/plex2scan",
+      "colors": {
+        "top": "#f3d9a6",
+        "card": "#f7f7f2",
+        "border": "#d9dccf",
+        "accent": "#1f1a10",
+        "on_accent": "#f3d9a6",
+        "ink": "#1f1a10",
+        "soft": "#5b5440"
+      },
+      "art": "<svg aria-hidden=\"true\" viewBox=\"0 0 64 64\" width=\"48\" height=\"48\"><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"#141414\"/><path d=\"M24 18.5v27a2 2 0 0 0 3 1.7l22-13.5a2 2 0 0 0 0-3.4l-22-13.5a2 2 0 0 0-3 1.7Z\" fill=\"#e5a00d\"/></svg>"
     }
   ]
 }

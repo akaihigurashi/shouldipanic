@@ -6,8 +6,9 @@
 <title>Should I panic?</title>
 <meta name="description" content="Free checks for current web vulnerabilities. Pick one, enter your website and get a plain answer in seconds: is it affected?">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/style.css?v=94a2eb28f4">
+<link rel="stylesheet" href="/style.css?v=ecf8a75c13">
 <script src="/app.js?v=d0f9dfea17" defer></script>
+<script src="/trust.js" defer></script>
 </head>
 <body>
 <main>
@@ -79,6 +80,22 @@
             <strong>Critical</strong><span>since 21 Oct 2026</span>
           </div>
           <a class="check" href="https://php2scan.shouldipanic.ch">Check your site<span class="sr-only"> for PHP2Shell</span></a>
+        </div>
+      </article>
+      <article class="tile" style="--top:#f3d9a6;--card:#f7f7f2;--border:#d9dccf;--accent:#1f1a10;--on-accent:#f3d9a6;--ink:#1f1a10;--soft:#5b5440" data-scanner="plex2scan">
+        <div class="tile-top">
+          <p class="tile-mark"><span>plex</span><span class="wm-2">2</span><span class="wm-scan">scan</span></p>
+          <svg aria-hidden="true" viewBox="0 0 64 64" width="48" height="48"><rect x="2" y="2" width="60" height="60" rx="14" fill="#141414"/><path d="M24 18.5v27a2 2 0 0 0 3 1.7l22-13.5a2 2 0 0 0 0-3.4l-22-13.5a2 2 0 0 0-3 1.7Z" fill="#e5a00d"/></svg>
+        </div>
+        <div class="tile-body">
+          <h3>Plex2Shell</h3>
+          <p class="cves"><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-96652" rel="noopener">CVE-2026-96652</a>, <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-96654" rel="noopener">-96654</a>, <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-96655" rel="noopener">-96655</a> and <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-96656" rel="noopener">-96656</a></p>
+          <p>Four chained flaws that take over Plex Media Server without a login. Exploited to plant cryptominers.</p>
+          <div class="severity">
+            <span class="bars" role="img" aria-label="Panic level 4 of 5"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></span>
+            <strong>High</strong><span>since 16 Oct 2026</span>
+          </div>
+          <a class="check" href="https://plex2scan.shouldipanic.ch">Check your site<span class="sr-only"> for Plex2Shell</span></a>
         </div>
       </article>
       <a class="tile-missing" href="https://github.com/akaihigurashi/panic-core/issues/new?title=Scanner%20suggestion%3A%20" rel="noopener">
