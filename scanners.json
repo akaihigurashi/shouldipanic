@@ -1,5 +1,5 @@
 {
-  "_comment": "One entry per scanner, newest first. build.py turns this into site/index.html.",
+  "_comment": "One entry per scanner. build.py turns this into site/index.html. cvss: highest CVSS score; exploited: actively exploited (sorts first among equal scores). The landing page's Check all calls url + /api/scan.",
   "scanners": [
     {
       "name": "brotli2scan",
@@ -24,7 +24,9 @@
         "ink": "#2a1d13",
         "soft": "#6b5544"
       },
-      "art": "<svg aria-hidden=\"true\" viewBox=\"0 0 120 80\" width=\"72\" height=\"48\"><ellipse cx=\"60\" cy=\"50\" rx=\"56\" ry=\"27\" fill=\"#7a3d15\"/><ellipse cx=\"60\" cy=\"44\" rx=\"54\" ry=\"30\" fill=\"#8f4a1c\"/><ellipse cx=\"52\" cy=\"34\" rx=\"34\" ry=\"14\" fill=\"#c98a4b\" opacity=\".55\"/><path d=\"M34 30 Q42 44 38 58M58 24 Q66 42 62 62M82 28 Q90 44 86 58\" stroke=\"#f3dcb4\" stroke-width=\"5\" fill=\"none\" stroke-linecap=\"round\"/></svg>"
+      "art": "<svg aria-hidden=\"true\" viewBox=\"0 0 120 80\" width=\"72\" height=\"48\"><ellipse cx=\"60\" cy=\"50\" rx=\"56\" ry=\"27\" fill=\"#7a3d15\"/><ellipse cx=\"60\" cy=\"44\" rx=\"54\" ry=\"30\" fill=\"#8f4a1c\"/><ellipse cx=\"52\" cy=\"34\" rx=\"34\" ry=\"14\" fill=\"#c98a4b\" opacity=\".55\"/><path d=\"M34 30 Q42 44 38 58M58 24 Q66 42 62 62M82 28 Q90 44 86 58\" stroke=\"#f3dcb4\" stroke-width=\"5\" fill=\"none\" stroke-linecap=\"round\"/></svg>",
+      "cvss": 9.2,
+      "exploited": false
     },
     {
       "name": "php2scan",
@@ -50,7 +52,9 @@
         "ink": "#18211d",
         "soft": "#4b5852"
       },
-      "art": "<span class=\"art-php\" aria-hidden=\"true\">&lt;?php</span>"
+      "art": "<span class=\"art-php\" aria-hidden=\"true\">&lt;?php</span>",
+      "cvss": 9.2,
+      "exploited": true
     },
     {
       "name": "plex2scan",
@@ -78,7 +82,9 @@
         "ink": "#1f1a10",
         "soft": "#5b5440"
       },
-      "art": "<svg aria-hidden=\"true\" viewBox=\"0 0 64 64\" width=\"48\" height=\"48\"><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"#141414\"/><path d=\"M24 18.5v27a2 2 0 0 0 3 1.7l22-13.5a2 2 0 0 0 0-3.4l-22-13.5a2 2 0 0 0-3 1.7Z\" fill=\"#e5a00d\"/></svg>"
+      "art": "<svg aria-hidden=\"true\" viewBox=\"0 0 64 64\" width=\"48\" height=\"48\"><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"#141414\"/><path d=\"M24 18.5v27a2 2 0 0 0 3 1.7l22-13.5a2 2 0 0 0 0-3.4l-22-13.5a2 2 0 0 0-3 1.7Z\" fill=\"#e5a00d\"/></svg>",
+      "cvss": 8.6,
+      "exploited": true
     }
   ]
 }
