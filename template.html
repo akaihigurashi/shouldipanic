@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Should I panic?</title>
+<meta name="description" content="Free checks for current web vulnerabilities. Pick one, enter your website and get a plain answer in seconds: is it affected?">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css?v={{CSS_VERSION}}">
+</head>
+<body>
+<main>
+  <nav class="topbar" aria-label="Site">
+    <a class="wordmark" href="/" aria-label="shouldipanic home"><span>shouldipanic</span><span class="wm-q">?</span></a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#yourself">Run it yourself</a>
+      <a class="gh" href="https://github.com/akaihigurashi" rel="noopener">
+        <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-text">
+      <h1>Should I&nbsp;panic?</h1>
+      <p class="answer">Probably not. Let's check.</p>
+      <p class="lede">When a serious web vulnerability hits the news, pick it below, enter your
+        website and get a plain answer in seconds. Free, no account, nothing to install.</p>
+    </div>
+    <svg class="meter" role="img" aria-label="Panic meter pointing to: probably not" viewBox="0 0 320 205">
+      <path d="M30 170 A130 130 0 0 1 290 170" class="m-track"/>
+      <path d="M30 170 A130 130 0 0 1 95 57.4" class="m-calm"/>
+      <path d="M225 57.4 A130 130 0 0 1 290 170" class="m-panic"/>
+      <line x1="160" y1="170" x2="88" y2="92" class="m-needle"/>
+      <circle cx="160" cy="170" r="16" class="m-hub"/>
+      <text x="22" y="200" class="m-label">calm</text>
+      <text x="252" y="200" class="m-label">panic</text>
+    </svg>
+  </header>
+
+  <section class="current" aria-labelledby="current-h">
+    <div class="section-head">
+      <h2 id="current-h">Current vulnerabilities</h2>
+      <p>Newest first. A new scanner appears when a big one drops.</p>
+    </div>
+    <div class="tiles">
+{{TILES}}
+      <a class="tile-missing" href="https://github.com/akaihigurashi/panic-core/issues/new?title=Scanner%20suggestion%3A%20" rel="noopener">
+        <span class="plus" aria-hidden="true">+</span>
+        <span class="missing-title">Missing one?</span>
+        <span>Suggest a vulnerability on GitHub</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="how" class="how" aria-labelledby="how-h">
+    <h2 id="how-h">How it works</h2>
+    <ol>
+      <li><span class="num" aria-hidden="true">1</span><h3>Pick the vulnerability</h3>
+        <p>Each one has its own scanner, built for exactly that problem.</p></li>
+      <li><span class="num" aria-hidden="true">2</span><h3>Enter your website</h3>
+        <p>The scanner loads your start page once, the same way a browser does.</p></li>
+      <li><span class="num" aria-hidden="true">3</span><h3>Get a plain answer</h3>
+        <p>Affected, patched, or not visible from outside, plus what to do next.</p></li>
+    </ol>
+  </section>
+
+  <section id="yourself" class="yourself" aria-labelledby="self-h">
+    <div>
+      <h2 id="self-h">Run it yourself</h2>
+      <p>Every scanner is open source and a single Python file. No install, no dependencies, no
+        limits: scan your own servers, whole IP ranges and every vhost on them.</p>
+      <p class="repo-links">{{REPO_LINKS}}</p>
+    </div>
+    <pre><span class="c"># download one file, run it</span>
+curl -LO https://github.com/akaihigurashi/{{FIRST}}/\
+  releases/latest/download/{{FIRST}}.py
+python3 {{FIRST}}.py 203.0.113.0/24
+
+<span class="c"># only scan systems you're allowed to test</span></pre>
+  </section>
+
+  <footer>
+    <p>shouldipanic.ch, open-source checks for current web vulnerabilities.
+      Only check websites you own or have permission to check. Abuse may be reported to the
+      authorities.</p>
+    <p class="coffee">Runs on coffee and panic. If it saved your night,
+      <a href="https://github.com/sponsors/akaihigurashi" rel="noopener">buy me a coffee</a>
+      <span aria-hidden="true">☕</span></p>
+  </footer>
+</main>
+</body>
+</html>

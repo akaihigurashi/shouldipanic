@@ -1,0 +1,35 @@
+{
+  "_comment": "One entry per scanner, newest first. build.py turns this into site/index.html.",
+  "scanners": [
+    {
+      "name": "brotli2scan",
+      "prefix": "brotli",
+      "vuln": "HTTP2Shell",
+      "vuln_note": "(Brotli)",
+      "cves": ["CVE-2026-111497"],
+      "summary": "Memory corruption in the Brotli decompressor. Hits Node.js, Python, .NET, Envoy and more.",
+      "severity": "Critical",
+      "level": 5,
+      "since": "2026-10-21",
+      "url": "https://brotli2scan.shouldipanic.ch",
+      "github": "https://github.com/akaihigurashi/brotli2scan",
+      "colors": {"top": "#efdcb8", "card": "#fffaf1", "border": "#e2d5bf", "accent": "#8f4a1c", "on_accent": "#fffaf1", "ink": "#2a1d13", "soft": "#6b5544"},
+      "art": "<svg aria-hidden=\"true\" viewBox=\"0 0 120 80\" width=\"72\" height=\"48\"><ellipse cx=\"60\" cy=\"50\" rx=\"56\" ry=\"27\" fill=\"#7a3d15\"/><ellipse cx=\"60\" cy=\"44\" rx=\"54\" ry=\"30\" fill=\"#8f4a1c\"/><ellipse cx=\"52\" cy=\"34\" rx=\"34\" ry=\"14\" fill=\"#c98a4b\" opacity=\".55\"/><path d=\"M34 30 Q42 44 38 58M58 24 Q66 42 62 62M82 28 Q90 44 86 58\" stroke=\"#f3dcb4\" stroke-width=\"5\" fill=\"none\" stroke-linecap=\"round\"/></svg>"
+    },
+    {
+      "name": "php2scan",
+      "prefix": "php",
+      "vuln": "PHP2Shell",
+      "vuln_note": "",
+      "cves": ["CVE-2026-109618", "CVE-2026-109619"],
+      "summary": "Remote code execution in PHP itself. Hits WordPress, Joomla, Nextcloud and every other PHP site.",
+      "severity": "Critical",
+      "level": 5,
+      "since": "2026-10-21",
+      "url": "https://php2scan.shouldipanic.ch",
+      "github": "https://github.com/akaihigurashi/php2scan",
+      "colors": {"top": "#d9e1fb", "card": "#f7f8fe", "border": "#d6dcf3", "accent": "#2447c9", "on_accent": "#ffffff", "ink": "#18211d", "soft": "#4b5852"},
+      "art": "<span class=\"art-php\" aria-hidden=\"true\">&lt;?php</span>"
+    }
+  ]
+}
